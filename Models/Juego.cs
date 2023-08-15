@@ -1,47 +1,52 @@
-public class Juego{
-    static private string username{get;set;}
-    static private int puntajeActual{get;set;}
-    static private int cantidadPreguntasCorrectas{get;set;}
-    static private List<Preguntas> preguntas{get;set;}
-    static private List<Respuestas> respuestas{get;set;}
-    public void inicializarJuego(){
+namespace tp7.Models;
+public static class Juego{
+    static private string username;
+    static private int puntajeActual;
+    static private int cantidadPreguntasCorrectas;
+    static private List<Preguntas> preguntas;
+    static private List<Respuestas> respuestas;
+    public static void inicializarJuego(){
         username = "";
         puntajeActual = 0;
         cantidadPreguntasCorrectas = 0;
     }
-    public List<Categorias> ObtenerCategorias(){
+    public static List<Categorias> ObtenerCategorias(){
         List<Categorias> devolver = new List<Categorias>();
         devolver = BD.ObtenerCategorias();
         return devolver;
     }
-    public List<Dificultades> ObtenerDificultades(){
+    public static List<Dificultades> ObtenerDificultades(){
         List<Dificultades> devolver = new List<Dificultades>();
         devolver = BD.ObtenerDificultades();
         return devolver;
     }
-    public void CargarPartida(string USERNAME, int dificultad, int categoria){
+    public static void CargarPartida(string USERNAME, int dificultad, int categoria){
         preguntas = BD.ObtenerPreguntas(dificultad,categoria);
-        preguntas.Shuffle();
         respuestas = BD.ObtenerRespuestas(preguntas);
         username = USERNAME;
     }
-    public Preguntas ObtenerProximaPregunta(){
-        int i;
-        if(i == 0){
-            i = 0;
-        }
-        Preguntas devolver = preguntas[i];
-        i = i + 1;
+    public static Preguntas ObtenerProximaPregunta(){
+        var rnd = new Random();
+        Preguntas devolver = preguntas[rnd.Next(0,preguntas.Count)];
         return devolver;
     }
-    public Respuestas ObtenerProximasRespuestas(int idPregunta){
-        for (int i = 0; i < Respuestas; i++)
+    public static List<Respuestas> ObtenerProximasRespuestas(int Pregunta){
+        List<Respuestas> devolver = new List<Respuestas>();
+        foreach (Respuestas respuesta in respuestas)
         {
-            if(respuestas[i].idPregunta == idPregunta){
-                return respuestas[i];
+            if(respuesta.IdPregunta == Pregunta){
+                devolver.Add(respuesta);
             }
         }
-        return null;
+        return devolver;
     }
-    
+    public static bool VerificarRespuesta(int Pregunta, int Respuesta){
+        bool devolver = false;
+        if(respuestas[Respuesta].IdPregunta == Pregunta && respuestas[Respuesta].Correcta == true){
+            cantidadPreguntasCorrectas++;
+            puntajeActual += 100;
+            respuestas.RemoveAt(Respuesta);
+        }
+        return devolver;
+    }
 }
