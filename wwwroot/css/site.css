@@ -1,21 +1,80 @@
-html {
+html
+{
   font-size: 14px;
   position: relative;
   min-height: 100%;
 }
 
-@media (min-width: 768px) {
-  html {
+@media (min-width: 768px)
+{
+  html
+  {
     font-size: 16px;
   }
 }
 
-body {
+body
+{
+  background-color: rgb(163, 189, 197);
   margin: 20px 60px 0px 20px;
 }
 
-footer {
+footer
+{
   position: fixed; 
   bottom: 0; 
   margin: 10px 0px 20px 0px;
+}
+
+nav
+{
+  position: sticky;
+  top:0;
+}
+
+nav ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #9aeaec;
+}
+  
+nav li 
+{
+  float: left;
+  height: 3.3rem;
+  border-left: solid rgb(77, 224, 155) 2px;
+}
+  
+nav li a
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li:hover 
+{
+  background-color: #138c91;
+}
+
+img
+{
+  height:20rem;
+  width:30rem;
+    
+}
+.ConfigurarJuego button
+{
+  height:10rem;
+  width:15rem;
+}
+
+.creditos div
+{
+  align-content: center;
 }
