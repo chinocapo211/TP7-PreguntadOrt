@@ -6,7 +6,8 @@ public static class BD{
     public static List<Categorias> ObtenerCategorias(){
         string sql = "SELECT * FROM Categorias";
         List<Categorias> listaC = new List<Categorias>{}; 
-        using(SqlConnection db = new SqlConnection(_connectionString)){
+        using(SqlConnection db = new SqlConnection(_connectionString))
+        {
            listaC = db.Query<Categorias>(sql).ToList();
         }
         return listaC;

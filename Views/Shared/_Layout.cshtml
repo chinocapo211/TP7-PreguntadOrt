@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     </head>
     <body>
+<<<<<<< HEAD
         <header style="position:fixed; top: 0; margin: 10px 0px 20px 0px;">
             Encabezado TP 07
         </header>
@@ -17,6 +18,20 @@
         <footer>
                 &copy; @DateTime.Now.Year - Taller de Programación - TP07
         </footer>
+=======
+        <nav>
+            <ul>
+                <li><a href='@Url.Action("Index")'>Home</a></li>
+                <li><a href='@Url.Action("ConfigurarJuego")'>Jugar</a></li>
+                <li><a href='@Url.Action("Creditos")'>Creditos</a></li>
+                <h1>Preguntadort</h1>
+                <li style="float: right;"><img class="navar" src="/img/Logo.jpg"></li>
+            </ul>
+        </nav>
+        <div style="padding:20px 10px 0px 10px;">
+            @RenderBody()
+        </div>
+>>>>>>> d9b37fc7ecd0fe15469646ae05ef4bf7fb775340
         <script src="~/js/site.js" asp-append-version="true"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </body>

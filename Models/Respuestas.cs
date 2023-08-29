@@ -1,4 +1,7 @@
-public class Respuestas{
+namespace tp7.Models;
+
+public class Respuestas
+{
     public int IdRespuesta{get;set;}
     public int IdPregunta{get;set;}
     public int Opcion{get;set;}
