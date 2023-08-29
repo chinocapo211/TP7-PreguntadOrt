@@ -28,6 +28,7 @@ public static class Juego{
     public static Preguntas ObtenerProximaPregunta(){
         var rnd = new Random();
         Preguntas devolver = preguntas[rnd.Next(0,preguntas.Count)];
+        preguntas.RemoveAt(devolver.IdPregunta);
         return devolver;
     }
     public static List<Respuestas> ObtenerProximasRespuestas(int Pregunta){
