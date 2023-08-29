@@ -7,6 +7,7 @@ public static class Juego
     static private int cantidadPreguntasCorrectas;
     static private List<Preguntas> preguntas;
     static private List<Respuestas> respuestas;
+
     public static void inicializarJuego()
     {
         username = "";

@@ -17,13 +17,7 @@ body
 {
   background-color: rgb(163, 189, 197);
   margin: 20px 60px 0px 20px;
-}
-
-footer
-{
-  position: fixed; 
-  bottom: 0; 
-  margin: 10px 0px 20px 0px;
+  text-align: center;
 }
 
 nav
@@ -50,7 +44,7 @@ nav li
   
 nav li a
 {
-  display: block;
+  display: inline-block;
   color: white;
   text-align: center;
   padding: 14px 16px;
@@ -64,8 +58,8 @@ nav li:hover
 
 img
 {
-  height:20rem;
-  width:30rem;
+  height:25rem;
+  width:25rem;
     
 }
 .ConfigurarJuego button
@@ -77,4 +71,92 @@ img
 .creditos div
 {
   align-content: center;
+}
+
+.navar
+{
+  height: 5rem;
+  width: 6rem;
+}
+
+.orange
+{
+  background-color: #f3861f;
+}
+
+.orange:hover
+{
+  background-color: #c96509f6;
+}
+.pink
+{
+  background-color: #f31fb3;
+}
+
+.pink:hover
+{
+  background-color: #c00d93f3;
+}
+.blue
+{
+  background-color: #0b70e4;
+}
+
+.blue:hover
+{
+  background-color: #117adba6;
+}
+.red
+{
+  background-color: #e91212;
+}
+
+.red:hover
+{
+  background-color: #aa0909e1;
+}
+.green
+{
+  background-color: #20c728;
+}
+
+.green:hover
+{
+  background-color: #07a71ce1;
+}
+
+.purple
+{
+  background-color: #c91ff3;
+}
+
+.purple:hover
+{
+  background-color: #b10ab1ef;
+}
+
+.yellow
+{
+  background-color: #f8e80d;
+}
+
+.yellow:hover
+{
+  background-color: #ccbf0a;
+}
+.ligt
+{
+  background-color: #9aeaec;
+}
+
+.ligt:hover
+{
+  background-color: #138c91;
+}
+
+button
+{
+  margin-top: 1rem;
+  height: 3rem;
+  width: 8rem;
 }

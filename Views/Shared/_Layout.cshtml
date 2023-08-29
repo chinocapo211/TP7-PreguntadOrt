@@ -13,15 +13,12 @@
                 <li><a href='@Url.Action("ConfigurarJuego")'>Jugar</a></li>
                 <li><a href='@Url.Action("Creditos")'>Creditos</a></li>
                 <h1>Preguntadort</h1>
-                <li><img src="/img/Logo.jpg"></li>
+                <li style="float: right;"><img class="navar" src="/img/Logo.jpg"></li>
             </ul>
         </nav>
         <div style="padding:20px 10px 0px 10px;">
             @RenderBody()
         </div>
-        <footer>
-                &copy; @DateTime.Now.Year - Taller de Programación - TPXX
-        </footer>
         <script src="~/js/site.js" asp-append-version="true"></script>
         @await RenderSectionAsync("Scripts", required: false)
     </body>
