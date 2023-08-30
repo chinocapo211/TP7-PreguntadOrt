@@ -18,6 +18,9 @@ body
   background-color: rgb(163, 189, 197);
   margin: 20px 60px 0px 20px;
   text-align: center;
+  background-image: url("img/fondo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 nav
@@ -159,4 +162,10 @@ button
   margin-top: 1rem;
   height: 3rem;
   width: 8rem;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
