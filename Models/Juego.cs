@@ -26,7 +26,7 @@ public static class Juego
         devolver = BD.ObtenerDificultades();
         return devolver;
     }
-    public static void CargarPartida(string USERNAME, int dificultad, int categoria)
+    public static void CargarPartida(string USERNAME, string dificultad, string categoria)
     {
         preguntas = BD.ObtenerPreguntas(dificultad,categoria);
         respuestas = BD.ObtenerRespuestas(preguntas);
@@ -42,22 +42,44 @@ public static class Juego
     public static List<Respuestas> ObtenerProximasRespuestas(int Pregunta)
     {
         List<Respuestas> devolver = new List<Respuestas>();
-        foreach (Respuestas respuesta in respuestas)
+        for (int i = 0; i < respuestas.Count; i++)
         {
-            if(respuesta.IdPregunta == Pregunta){
-                devolver.Add(respuesta);
+            if(respuestas[i].IdPregunta == Pregunta){
+                devolver.Add(respuestas[i]);
             }
         }
         return devolver;
     }
-    public static bool VerificarRespuesta(int Pregunta, int Respuesta)
+    public static bool VerificarRespuesta(int Pregunta, string Respuesta)
     {
         bool devolver = false;
-        if(respuestas[Respuesta].IdPregunta == Pregunta && respuestas[Respuesta].Correcta == true){
-            cantidadPreguntasCorrectas++;
-            puntajeActual += 100;
-            respuestas.RemoveAt(Respuesta);
+        for (int i = 0; i < respuestas.Count; i++)
+        {
+            if(respuestas[i].Contenido == Respuesta && respuestas[i].IdPregunta == Pregunta )
+            {
+                devolver = respuestas[i].Correcta;
+                cantidadPreguntasCorrectas++;
+                puntajeActual += 100;
+            }   
         }
+        return devolver;
+    }
+
+    public static int Puntaje()
+    {
+        int devolver = puntajeActual;
+        return devolver;
+    }
+
+    public static int RespuestasCorrectas()
+    {
+        int devolver = cantidadPreguntasCorrectas;
+        return devolver;
+    }
+
+    public static string NombredeUsuario()
+    {
+        string devolver = username;
         return devolver;
     }
 }

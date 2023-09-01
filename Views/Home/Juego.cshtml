@@ -7,11 +7,17 @@
         <title>Juego</title>
         <link rel="Stylesheet" href="site.css">
     </head>
-   <body>
-        <img src="img/@ViewBag. ">
-        <form method="post" action="Juego.cshtml">
-            <h1>pregunta</h1>
-            <input type="radio">
+    <body>
+        <h1 class="right">@ViewBag.username Puntaje actual: @ViewBag.puntaje</h1>
+        <img src="img/@ViewBag.preg_actual.Foto">
+        <form method="post" action='@Url.Action("VerificarRespuesta")'>
+            <h1>@ViewBag.preg_actual.Enunciado</h1>
+            <input type="hidden" name="IdPregunta" value="@ViewBag.preg_actual.IdPregunta">
+            <br>
+            @foreach(Respuestas item in ViewBag.respuestas_actual)
+            {
+                <input type="button" class="btn btn-secondary" id="@item.IdRespuesta" name="Respuesta" value="@item.Contenido">
+            }
         </form>
     </body>
 </html>

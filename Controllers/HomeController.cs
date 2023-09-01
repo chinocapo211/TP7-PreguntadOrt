@@ -7,6 +7,7 @@ public class HomeController : Controller
     {
         return View();
     }
+    
     public IActionResult ConfigurarJuego()
     {
         Juego.inicializarJuego();
@@ -15,36 +16,51 @@ public class HomeController : Controller
         //Falta hacer que se guarden la categoria elegida, la dificultad y el nombre
         return View();
     }
-    public IActionResult Comenzar(string username, int dificultad, int categoria){
+
+    public IActionResult Comenzar(string username, string dificultad, string categoria)
+    {
         Juego.CargarPartida(username,dificultad,categoria);
-        if(Juego.ObtenerProximaPregunta == null){
-            return RedirectToAction("confi",ConfigurarJuego);
+        if(Juego.ObtenerProximaPregunta == null)
+        {
+            return RedirectToAction("ConfigurarJuego");
         }
-        return RedirectToAction("juego",Jugar);
+        return RedirectToAction("Jugar");
     }
-    public IActionResult Jugar(){
-        if(Juego.ObtenerProximaPregunta == null){
+
+    public IActionResult Jugar()
+    {
+        if(Juego.ObtenerProximaPregunta == null)
+        {
             //return RedirectToAction("termino",Fin);
-            return View();
+            return View("fin");
         }
+        ViewBag.username = Juego.NombredeUsuario();
+        ViewBag.puntaje = Juego.Puntaje();
+        ViewBag.correctas = Juego.RespuestasCorrectas();
         ViewBag.preg_actual = Juego.ObtenerProximaPregunta();
-        ViewBag.respuestas_actual = Juego.ObtenerProximasRespuestas(ViewBag.preg_actual);
-        return View();
+        ViewBag.respuestas_actual = Juego.ObtenerProximasRespuestas(ViewBag.preg_actual.IdPregunta);
+        return View("juego");
     }
-    [HttpPost] public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
-        ViewBag.Correcta = Juego.VerificarRespuesta(idPregunta,idRespuesta);
-        if(ViewBag.Correcta = false){
+
+    [HttpPost] public IActionResult VerificarRespuesta(int idPregunta, string Respuesta)
+    {
+        ViewBag.Correcta = Juego.VerificarRespuesta(idPregunta, Respuesta);
+        if(ViewBag.Correcta = false)
+        {
             ViewBag.total_respuestas = Juego.ObtenerProximasRespuestas(idPregunta);
-            for (int i = 0; i < ViewBag.total_respuestas.length; i++){
-                if(ViewBag.total_respuestas[i].Correcta == true){
+            for (int i = 0; i < ViewBag.total_respuestas.length; i++)
+            {
+                if(ViewBag.total_respuestas[i].Correcta == true)
+                {
                     ViewBag.respuesta_correcta = ViewBag.total_respuestas[i];
                 }
             }
         }
-        return View();
+        return RedirectToAction("Jugar");
     }
-        public IActionResult Creditos(string username, int dificultad, int categoria){
-        
+
+    public IActionResult Creditos()
+    {
         return View();
     }
 }
