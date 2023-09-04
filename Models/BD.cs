@@ -69,7 +69,7 @@ public static class BD
                     idDificultad = listaD[i].IdDificultad;
                 }   
             }
-            sql = "SELECT * FROM Preguntas WHERE IdDificultad = @IdDificultad, IdCategoria = @IdCategoria";
+            sql = "SELECT * FROM Preguntas WHERE IdDificultad = @IdDificultad and IdCategoria = @IdCategoria";
         }
         else sql = "SELECT * FROM Preguntas";
 
